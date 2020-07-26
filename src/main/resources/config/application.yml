@@ -1,0 +1,58 @@
+server:
+  port: 8000
+
+spring:
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  #配置 Jpa
+  jpa: 
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: true
+
+  redis:
+    #数据库索引
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    #连接超时时间
+    timeout: 5000
+  activiti:
+    async-executor-activate: false #开启异步，定时任务
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+#  type-aliases-package: com.urthink.upfs.springbootmybatis.entity
+  #IDENTITY: MYSQL #取回主键的方式
+  #notEmpty: false #insert和update中，是否判断字符串类型!=''
+#  configuration:
+    #进行自动映射时，数据以下划线命名，如数据库返回的"order_address"命名字段是否映射为class的"orderAddress"字段。默认为false
+#     map-underscore-to-camel-case: true
+    # 输出SQL执行语句 （log4j2本身可以输出sql语句）
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #这种带结果集
+        
+#七牛云
+qiniu:
+  # 文件大小 /M
+  max-size: 15
+
+#邮箱验证码有效时间/分钟
+code:
+  expiration: 5
+
+#登录图形验证码有效时间/分钟
+loginCode:
+  expiration: 2
+  
+ #上传文件路径
+upload:
+  filePath: E:\\wamp64\\www\\baoli\\baoli\\static\\upload\\
